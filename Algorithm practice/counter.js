@@ -63,3 +63,25 @@ function frequency(str1, str2) {
 }
 
 console.log(frequency(str1, str2));
+
+//practice 3 average pair //nested for loop
+let arr4 = [-11, 0, 1, 2, 3, 9, 14, 17, 21];
+
+function averagePair(arr, avg) {
+  //O(n^2)
+  if (!arr4) return [];
+  let count = 0;
+  results = [];
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      count++;
+      if (avg * 2 - arr[j] == arr[i]) {
+        console.log(arr[i], arr[j]);
+        results.push([arr[i], arr[j]]);
+      }
+    }
+  }
+  return results;
+}
+
+console.log(averagePair(arr4, 1.5));
