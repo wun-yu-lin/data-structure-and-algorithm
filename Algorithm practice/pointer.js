@@ -41,3 +41,29 @@ function palindrome(str) {
   return true;
 }
 console.log(palindrome(str1));
+
+//practice3 subsequence problem
+//isSubsequence("book","brooklyn"); true
+
+function isSubsequence(str1, str2) {
+  let left1 = 0;
+  let left2 = 0;
+  let str1length = str1.length - 1;
+  let str2length = str2.length - 1;
+  if (!str1) return true;
+  while (left2 <= str2length) {
+    if (str1[left1] == str2[left2]) {
+      left1++;
+      left2++;
+    }
+    if (str1[left1] !== str2[left2]) {
+      left2++;
+    }
+    if (left1 > str1length) return true;
+  }
+  return false;
+}
+
+console.log("isSubsequence");
+console.log(isSubsequence("book", "brooklyn"));
+console.log(isSubsequence("abc", "bac"));
