@@ -87,3 +87,77 @@ function minSum(arr, n) {
   console.log(results);
   return results;
 }
+
+//practice minSubarray
+
+// function minSubLength(arr, n) {
+//   let start = 0; //pointer
+//   let end = 0; //pointer
+//   let arrlength = arr.length;
+//   let minLength = Infinity;
+//   let total = 0;
+
+//   if (!arr) return null;
+//   while (start < arrlength) {
+//     if (total < n && end < arrlength) {
+//       total += arr[end];
+//       end++;
+//       console.log("pointer" + total, start, end);
+//     } else if (total >= n) {
+//       let curlength = end - start;
+//       console.log(curlength);
+//       console.log(start, end);
+//       if (minLength > curlength) {
+//         minLength = curlength;
+//         console.log("pointer" + total, start, end);
+//       }
+//       total -= arr[start];
+//       start++;
+//     } else if (end >= arrlength) {
+//       break;
+//     }
+//     console.log("test" + total);
+//   }
+//   if (minLength === Infinity) {
+//     console.log("can not find minSubLength");
+//     return -1;
+//   }
+//   console.log(minLength);
+//   return minLength;
+// }
+
+minSubLength([9, 8, 1, 4, 9, 5, 1, 2], 11); //2
+minSubLength([2, 3, 1, 2, 4, 3], 7); //2
+function minSubLength(arr, n) {
+  let start = 0; //pointer
+  let end = 0; //pointer
+  let arrlength = arr.length;
+  let minLength = Infinity;
+  let total = 0;
+
+  if (!arr) return null;
+  while (start < arrlength) {
+    if (end == 0 && total < n) {
+      total = total + arr[end];
+      end++;
+    } else if (end < arrlength && total < n) {
+      total = total + arr[end];
+      end++;
+    } else if (total >= n) {
+      let curlength = end - start;
+      if (minLength > curlength) {
+        minLength = curlength;
+      }
+      total = total - arr[start];
+      start++;
+    } else if (end >= arrlength) {
+      break;
+    }
+  }
+  if (minLength == Infinity) {
+    console.log("can not find minSubLength");
+    return -1;
+  }
+  console.log(minLength);
+  return minLength;
+}
